@@ -13,7 +13,7 @@ namespace RestartGoogleDriveDesktopClient
         {   
             var pk = new ProcessKiller();
             var ps = new ProcessStarter();
-            var processToKill = "googledrivesync.exe";
+            var processToKill = "googledrivesync";
             var processToStart = @"C:\Program Files (x86)\Google\Drive\googledrivesync.exe";
 
             pk.Kill(processToKill);

@@ -12,17 +12,12 @@ namespace RestartGoogleDriveDesktopClient
         {
             try
             {
-                ProcessStartInfo psi = new ProcessStartInfo();
-                psi.FileName = "cmd.exe";
-                psi.WindowStyle = ProcessWindowStyle.Hidden;
-
-                //some processes need Admin privileges
-                psi.Verb = "runas";
-
-                // force = /F , include tree = /T
-                psi.Arguments = "/C taskkill /F /IM " + procName + ".exe /T";
-
-                Process.Start(psi);
+                foreach (var process in Process.GetProcessesByName(procName))
+                {
+                    var pId = process.Id.ToString();
+                    process.Kill();
+                    log.Info(String.Format("Killed process {0}, PID={1}.", procName, pId));
+                }
             }
             catch (Exception e)
             {
@@ -31,5 +26,6 @@ namespace RestartGoogleDriveDesktopClient
             }
             
         }
+
     }
 }
