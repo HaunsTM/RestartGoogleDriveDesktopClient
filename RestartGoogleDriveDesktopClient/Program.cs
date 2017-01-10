@@ -18,8 +18,6 @@ namespace RestartGoogleDriveDesktopClient
 
             pk.Kill(processToKill);
             ps.Start(processToStart);
-
-            Console.Read();
         }
     }
 }
